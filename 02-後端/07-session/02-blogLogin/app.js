@@ -97,8 +97,10 @@ async function create(ctx) {
     console.log('create:post=', post)
     var user = await ctx.state.session.get('user')
     console.log('user=', user)
-    db.query("INSERT INTO posts (username, title, body) VALUES (?, ?, ?)", [user.username, post.title, post.body]);
-    ctx.response.redirect('/');
+    if (user) {
+      db.query("INSERT INTO posts (username, title, body) VALUES (?, ?, ?)", [user.username, post.title, post.body]);
+      ctx.response.redirect('/');
+    }
   }
 }
 
