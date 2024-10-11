@@ -71,7 +71,9 @@ async function signup(ctx) {
   const body = ctx.request.body
   if (body.type() === "form") {
     var user = await parseFormBody(body)
+    console.log('user=', user)
     var dbUsers = userQuery(`SELECT id, username, password, email FROM users WHERE username='${user.username}'`)
+    console.log('dbUsers=', dbUsers)
     if (dbUsers.length === 0) {
       sqlcmd("INSERT INTO users (username, password, email) VALUES (?, ?, ?)", [user.username, user.password, user.email]);
       ctx.response.body = render.success()
