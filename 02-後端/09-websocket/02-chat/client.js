@@ -1,7 +1,7 @@
 import { StandardWebSocketClient } from "https://deno.land/x/websocket@v0.1.3/mod.ts";
 import { input } from "./input.ts"
 
-const endpoint = "ws://127.0.0.1:8080" // Deno.args[0] || "ws://127.0.0.1:8080";
+const endpoint = "ws://127.0.0.1:8080"
 let user = await input("user name:")
 const ws = new StandardWebSocketClient(endpoint);
 ws.on("open", async function() {
