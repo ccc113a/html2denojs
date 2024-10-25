@@ -2,7 +2,6 @@
 
 (function() {
   var socket = new WebSocket("ws://"+window.location.hostname+":8080")
-  // var socket = io('http://localhost:3000')  // var socket = io(); 改成新版 socket.io 2.0 的語法
   var canvas = document.querySelectorAll('.whiteboard')[0];
   var colors = document.querySelectorAll('.color');
   var context = canvas.getContext('2d');
@@ -20,15 +19,6 @@
   for (var i = 0; i < colors.length; i++){
     colors[i].addEventListener('click', onColorUpdate, false);
   }
-
-  /* socket.on('drawing', onDrawingEvent);
-  function onDrawingEvent(data){
-    var w = canvas.width;
-    var h = canvas.height;
-    drawLine(data.x0 * w, data.y0 * h, data.x1 * w, data.y1 * h, data.color);
-  }*/
-
-
 
   socket.onopen = function (event) {
     console.log('socket:onopen()...')
@@ -76,15 +66,6 @@
       y1: y1 / h,
       color: color
     }))
-    /*
-    socket.emit('drawing', {
-      x0: x0 / w,
-      y0: y0 / h,
-      x1: x1 / w,
-      y1: y1 / h,
-      color: color
-    });
-    */
   }
 
   function onMouseDown(e){
