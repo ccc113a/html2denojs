@@ -1,7 +1,7 @@
 import { Application, send } from "https://deno.land/x/oak/mod.ts";
 import { WebSocketServer } from "https://deno.land/x/websocket/mod.ts";
 import { chat } from './ollama.js'
-// html serve
+
 const app = new Application();
 
 app.use(async (ctx) => {
@@ -18,23 +18,23 @@ app.use(async (ctx) => {
 const wss = new WebSocketServer(8080);
 
 wss.on("connection", function (wsc) {
-	wsc.on("message", async function (jsonMsg) {
-		let msg = JSON.parse(jsonMsg)
-		console.log(msg);
+	wsc.on("message", async function (msgJson) {
+		let msgObj = JSON.parse(msgJson)
+		console.log(msgObj);
 		// broadcast message
 		wss.clients.forEach(function each(client) {
 			if (!client.isClosed) {
-				client.send(jsonMsg);
+				client.send(msgJson);
 			}
 		});
-		let [user, content] = msg.split(':')
-		console.log('user=', user, 'content=', content)
+		let {user, msg} = msgObj
+		console.log('user=', user, 'msg=', msg)
 
-		let response = await chat(content)
+		let response = await chat(msg)
 		console.log('response=', response)
 		wss.clients.forEach(function each(client) {
 			if (!client.isClosed) {
-				client.send(JSON.stringify('ollama:'+response));
+				client.send(JSON.stringify({user:'ollama', msg:response}));
 			}
 		});
 	});

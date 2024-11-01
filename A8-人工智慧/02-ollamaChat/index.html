@@ -36,11 +36,11 @@
       }
 
       form.onsubmit = function() {
-        let umsg = user.value + ':' + msg.value
+        let msgObj = {user:user.value, msg:msg.value}
         // socket.emit('chat message', umsg)
-        socket.send(JSON.stringify(umsg))
+        socket.send(JSON.stringify(msgObj))
         // socket.send(umsg)
-        console.log('umsg=', umsg)
+        console.log('msgObj=', msgObj)
         msg.value = ''
         return false
       }
@@ -50,8 +50,8 @@
 			socket.onclose = function (event) { console.log('socket:onclose()...') }
       socket.onmessage = function(event){
 				console.log(event.data);
-				var line = JSON.parse(event.data);
-        messages.appendChild(html2node('<li>'+line+'</li>'))
+				var msgObj = JSON.parse(event.data);
+        messages.appendChild(html2node(`<li>${msgObj.user}:${msgObj.msg}</li>`))
         window.scrollTo(0, document.body.scrollHeight)
       }
     </script>
