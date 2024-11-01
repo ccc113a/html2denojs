@@ -1,10 +1,8 @@
-// import fetch from "node-fetch";
-
 const url = 'http://localhost:11434/api/chat';
 const data = {
   model: "llama3.2:3b", // "gemma:2b",
   messages: [
-    { role: "user", content: "你是誰？" }
+    { role: "user", content: "什麼是相對論？" }
   ]
 };
 
