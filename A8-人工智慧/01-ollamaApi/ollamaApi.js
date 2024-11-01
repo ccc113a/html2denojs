@@ -1,4 +1,5 @@
 const url = 'http://localhost:11434/api/chat';
+// const url = 'http://192.168.61.161:11434/api/chat';
 const data = {
   model: "llama3.2:3b", // "gemma:2b",
   messages: [
