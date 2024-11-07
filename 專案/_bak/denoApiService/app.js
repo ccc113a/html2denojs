@@ -1,4 +1,4 @@
-import { Application, Router} from "https://deno.land/x/oak/mod.ts" // import { Application, Router} from "https://deno.land/x/oak@v12.0.0/mod.ts"
+import { Application, Router} from "https://deno.land/x/oak/mod.ts"
 import { oakCors } from "https://deno.land/x/cors/mod.ts";
 import { sqlHandler, fetchHandler, uploadHandler } from './handler.js'
 
