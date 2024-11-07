@@ -30,5 +30,5 @@ app.use(oakCors()); // Enable CORS for All Routes
 app.use(router.routes())
 app.use(router.allowedMethods())
 
-console.log('Server run at http://127.0.0.1:3001')
-await app.listen({ port: 3001 })
+console.log('Server run at http://127.0.0.1:6789')
+await app.listen({ port: 6789 })
