@@ -1,5 +1,32 @@
+# multipart
+
+## 啟動 file-server
+
+* https://jsr.io/@std/http/doc/file-server
 
 
+```
+(base) cccimac@cccimacdeiMac 01-multipart % deno run --allow-net --allow-read --allow-sys jsr:@std/http/file-server
+Listening on:
+- Local: http://0.0.0.0:8000
+- Network: http://172.20.10.2:8000
+                                    
+```
+
+## 啟動 fileupload.js 然後用瀏覽器上傳
+
+```
+(base) cccimac@cccimacdeiMac 01-multipart % deno run -A fileupload.js
+Server run at http://127.0.0.1:3001
+data= FormData {
+  author: "ccc",
+  myfile: File { name: "1728133637909.jpeg", size: 205354, type: "image/jpeg" },
+  quote: "ccc"
+}
+key= author value= ccc
+key= myfile value= File { name: "1728133637909.jpeg", size: 205354, type: "image/jpeg" }
+key= quote value= ccc
+```
 
 
 ## oak
