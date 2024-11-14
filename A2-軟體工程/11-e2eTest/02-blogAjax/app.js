@@ -36,12 +36,26 @@ async function show (ctx) {
   ctx.response.body = post
 }
 
+
+/*
+async function create (ctx) {
+  const body = ctx.request.body;
+  console.log('body = ', body)
+  if (body.type() === "json") {
+    let post = await body.json()
+    post.id = posts.length
+    posts.push(post)
+    ctx.response.body = 'success'
+    console.log('create:save=>', post)
+  }
+}
+*/
 async function create (ctx) {
   // var post = ctx.request.body
-  const body = ctx.request.body(); // content type automatically detected
+  const body = ctx.request.body; // content type automatically detected
   console.log('body = ', body)
-  if (body.type === "json") {
-    let post = await body.value;
+  if (body.type() === "json") {
+    let post = await body.json();
     const id = posts.push(post) - 1
     console.log('create:id=>', id)
     console.log('create:get=>', post)

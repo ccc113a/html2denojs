@@ -1,6 +1,8 @@
 import {ok} from 'https://deno.land/x/tdd/mod.ts'
 // import puppeteer from "https://deno.land/x/puppeteer/mod.ts";
-import puppeteer from "npm:puppeteer";
+// import puppeteer from "npm:puppeteer";
+import puppeteer from "https://deno.land/x/puppeteer_plus/mod.ts";
+
 var browser, page
 
 const opts = {
@@ -49,7 +51,7 @@ Deno.test('Puppteer', async function() {
   await sleep(500);
   html = await page.content()
   ok(html.indexOf('<h1>aaa</h1>') >= 0)
-  await browser.close();
+  // await browser.close();
 })
 
 /*

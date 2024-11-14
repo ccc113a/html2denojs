@@ -21,7 +21,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 async function list(ctx) {
-  // console.log('list: posts=%j', posts)
+  console.log('list: posts=', posts)
   ctx.response.body = await render.list(posts);
 }
 
@@ -37,22 +37,18 @@ async function show(ctx) {
 }
 
 async function create(ctx) {
-  const body = ctx.request.body(); // content type automatically detected
-  // console.log('body = ', body)
-  var post = null
-  if (body.type === "form") {
-    const pairs = await body.value
-    // console.log('pairs=', pairs)
-    post = {}
+  const body = ctx.request.body
+  console.log('body.type()=', body.type())
+  if (body.type() === "form") {
+    const pairs = await body.form() // body.value
+    const post = {}
     for (const [key, value] of pairs) {
       post[key] = value
     }
-  } else if (body.type === "json") {
-    post = await body.value; // an object of parsed JSON
+    console.log('post=', post)
+    const id = posts.push(post) - 1;
+    post.created_at = new Date();
+    post.id = id;
+    ctx.response.redirect('/');
   }
-  console.log('post=', post)
-  const id = posts.push(post) - 1;
-  post.created_at = new Date();
-  post.id = id;
-  ctx.response.redirect('/');
 }
