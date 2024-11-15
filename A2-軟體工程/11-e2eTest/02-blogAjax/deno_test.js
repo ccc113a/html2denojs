@@ -51,7 +51,7 @@ Deno.test('Puppteer', async function() {
   await sleep(500);
   html = await page.content()
   ok(html.indexOf('<h1>aaa</h1>') >= 0)
-  // await browser.close();
+  await browser.close();
 })
 
 /*

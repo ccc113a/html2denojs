@@ -1,4 +1,5 @@
 
+* https://serper.dev/
 
 * [政府資料開放平臺](https://data.gov.tw/)
     * [ 如何使用 「開放資料( Open Data ) 」? + (預備篇：介接前，應該準備好的三件事情) + 如何簡單解釋 API ?](https://ithelp.ithome.com.tw/articles/10213463)
