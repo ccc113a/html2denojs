@@ -22,7 +22,8 @@ while (true) {
 for (const i of range(3,8)) {
   console.log('i=', i)
 }
-
+/*
 for (const i of range(3,999999999)) {
   console.log('i=', i)
 }
+*/

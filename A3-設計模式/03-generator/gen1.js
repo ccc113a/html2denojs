@@ -6,7 +6,7 @@ function* helloWorldGenerator() {
   // 第一次 next 結束， yield 完後停在這裡
 
   // 第二次 next 開始
-  console.log('paramsInNextAfterHello', paramsInNextAfterHello);
+  console.log('paramsInNextAfterHello|', paramsInNextAfterHello, "|");
   let paramsInNextAfterWorld = yield 'world';
   // 第二次 next 結束， yield 完後停在這裡
 
